@@ -5,7 +5,13 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -21,9 +27,15 @@
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "jshint": "^2.13.6"
+    "express-async-handler": "^1.2.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.27.0"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"
   }
 }
